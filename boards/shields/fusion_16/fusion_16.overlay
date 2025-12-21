@@ -1,7 +1,7 @@
 / {
   chosen {
     zmk,kscan = &kscan0;
-    zmk,sensors = &encoder0, &encoder1;
+    zmk,sensors = &encoder_left;
   };
 
   kscan0: kscan {
@@ -23,23 +23,16 @@
         &gpio0 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R1 P0.10 */
         &gpio1 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R2 P1.11 */
         &gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R3 P1.13 */
+        &gpio1 4  (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R4 P1.04 (encoder push) */
     >;
 
   };
 
-  /* Encoder0 from schematic: ENC0=D6=P1.00, ENC1=D7=P0.11 */
-  encoder0: encoder0 {
+  /* Left rotary encoder */
+  encoder_left: encoder_left {
     compatible = "zmk,rotary-encoder";
-    a-gpios = <&gpio1 0  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* P1.00 */
-    b-gpios = <&gpio0 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* P0.11 */
-    steps = <4>;
-  };
-
-  /* Encoder1 from pinout: ENC2=P0.29, ENC3=P0.31 */
-  encoder1: encoder1 {
-    compatible = "zmk,rotary-encoder";
-    a-gpios = <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* P0.29 */
-    b-gpios = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* P0.31 */
+    a-gpios = <&gpio0 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* P0.11 */
+    b-gpios = <&gpio1 0  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* P1.00 */
     steps = <4>;
   };
 };
