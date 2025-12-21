@@ -23,8 +23,6 @@
       &gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R2 P1.13 */
       &gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R3 P1.15 */
    >;
-
-`
   };
 
   /* Encoder0 from schematic: ENC0=D6=P1.00, ENC1=D7=P0.11 */
