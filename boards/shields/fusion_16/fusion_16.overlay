@@ -8,21 +8,23 @@
     compatible = "zmk,kscan-gpio-matrix";
     diode-direction = "col2row";
 
-    /* C0..C3 from schematic: D5,D4,D3,D2 */
+    /* Columns */
     col-gpios = <
-      &gpio0 24 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C0 P0.24 */
-      &gpio0 22 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C1 P0.22 */
-      &gpio0 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C2 P0.20 */
-      &gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C3 P0.17 */
+        &gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C0 P0.17 */
+        &gpio0 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C1 P0.20 */
+        &gpio0 22 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C2 P0.22 */
+        &gpio0 24 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C3 P0.24 */
     >;
 
-    /* Rows: keep your current row pins for now (we’ll verify next) */
+
+    /* Rows */
     row-gpios = <
-      &gpio0 9 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R0 P0.09 */
-      &gpio1 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R1 P1.11 */
-      &gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R2 P1.13 */
-      &gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R3 P1.15 */
-   >;
+        &gpio0 9  (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R0 P0.09 */
+        &gpio0 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R1 P0.10 */
+        &gpio1 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R2 P1.11 */
+        &gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R3 P1.13 */
+    >;
+
   };
 
   /* Encoder0 from schematic: ENC0=D6=P1.00, ENC1=D7=P0.11 */
