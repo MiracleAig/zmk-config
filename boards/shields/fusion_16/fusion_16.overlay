@@ -8,36 +8,36 @@
     compatible = "zmk,kscan-gpio-matrix";
     diode-direction = "col2row";
 
-    /* Columns */
+    /* C0..C3 from schematic: D5,D4,D3,D2 */
     col-gpios = <
-      &gpio1 6  (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C0  P1.06 */
-      &gpio1 4  (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C1  P1.04 */
-      &gpio0 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C2  P0.11 */
-      &gpio1 0  (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C3  P1.00 */
+      &gpio0 24 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C0 P0.24 */
+      &gpio0 22 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C1 P0.22 */
+      &gpio0 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C2 P0.20 */
+      &gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C3 P0.17 */
     >;
 
-    /* Rows */
+    /* Rows: keep your current row pins for now (we’ll verify next) */
     row-gpios = <
-      &gpio0 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R0  P0.10 */
-      &gpio1 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R1  P1.11 */
-      &gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R2  P1.13 */
-      &gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R3  P1.15 */
+      &gpio0 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R0 P0.10 */
+      &gpio1 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R1 P1.11 */
+      &gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R2 P1.13 */
+      &gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R3 P1.15 */
     >;
   };
 
-  /* Encoder 0: ENC0=P0.09, ENC1=P1.02 */
+  /* Encoder0 from schematic: ENC0=D6=P1.00, ENC1=D7=P0.11 */
   encoder0: encoder0 {
     compatible = "zmk,rotary-encoder";
-    a-gpios = <&gpio0 9 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;  /* P0.09 */
-    b-gpios = <&gpio1 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;  /* P1.02 */
+    a-gpios = <&gpio1 0  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* P1.00 */
+    b-gpios = <&gpio0 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* P0.11 */
     steps = <4>;
   };
 
-  /* Encoder 1: ENC2=P0.31, ENC3=P0.29 */
+  /* Encoder1 from pinout: ENC2=P0.29, ENC3=P0.31 */
   encoder1: encoder1 {
     compatible = "zmk,rotary-encoder";
-    a-gpios = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* P0.31 */
-    b-gpios = <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* P0.29 */
+    a-gpios = <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* P0.29 */
+    b-gpios = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* P0.31 */
     steps = <4>;
   };
 };
