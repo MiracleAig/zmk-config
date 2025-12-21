@@ -6,7 +6,7 @@
 
   kscan0: kscan {
     compatible = "zmk,kscan-gpio-matrix";
-    diode-direction = "col2row";
+    diode-direction = "row2col";
 
     /* C0..C3 from schematic: D5,D4,D3,D2 */
     col-gpios = <
@@ -18,7 +18,7 @@
 
     /* Rows: keep your current row pins for now (we’ll verify next) */
     row-gpios = <
-      &gpio0 9 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R0 P0.10 */
+      &gpio0 9 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R0 P0.09 */
       &gpio1 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R1 P1.11 */
       &gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R2 P1.13 */
       &gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R3 P1.15 */
