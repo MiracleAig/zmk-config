@@ -7,20 +7,18 @@
     compatible = "zmk,kscan-gpio-matrix";
     diode-direction = "col2row";
 
-    /* Dummy pins just to satisfy build + matrix size.
-       Pick any unique GPIOs; it won't "work", but it will boot. */
     col-gpios = <
-      &gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)
-      &gpio0 3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)
-      &gpio0 4 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)
-      &gpio0 5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)
+      &gpio0 38 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C0  P1.06 */
+      &gpio0 36 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C1  P1.04 */
+      &gpio0 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C2  P0.11 */
+      &gpio0 32 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C3  P1.00 */
     >;
 
     row-gpios = <
-      &gpio0 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)
-      &gpio0 7 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)
-      &gpio0 8 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)
-      &gpio0 9 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)
+      &gpio0 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R0  P0.10 */
+      &gpio0 43 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R1  P1.11 */
+      &gpio0 45 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R2  P1.13 */
+      &gpio0 47 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R3  P1.15 */
     >;
   };
 };
