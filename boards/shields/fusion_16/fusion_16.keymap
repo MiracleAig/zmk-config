@@ -6,7 +6,6 @@
     compatible = "zmk,keymap";
 
     default_layer {
-      /* 16 keys; only the 4th one (S4) is active */
       bindings = <
         &none &none &none &kp A
         &none &none &none &none
@@ -14,9 +13,7 @@
         &none &none &none &none
       >;
 
-      /* Encoder 0: volume, Encoder 1: page up/down (test scroll-like behavior) */
-     sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
-      >;
+      sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
     };
   };
 };
