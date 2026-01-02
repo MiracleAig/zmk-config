@@ -1,37 +1,85 @@
-#include "fusion_16-layouts.dtsi"
+#include <dt-bindings/zmk/matrix_transform.h>
+#include <physical_layouts.dtsi>
 
 / {
   chosen {
     zmk,kscan = &kscan0;
-    zmk,sensors = &left_encoder;
     zmk,physical-layout = &fusion_16_layout;
+    zmk,sensors = &sensors;
   };
 
+  /* --- REQUIRED for ZMK Studio: matrix transform --- */
+  default_transform: matrix_transform {
+    compatible = "zmk,matrix-transform";
+    rows = <5>;
+    columns = <4>;
+    map = <
+      RC(0,0) RC(0,1) RC(0,2) RC(0,3)
+      RC(1,0) RC(1,1) RC(1,2) RC(1,3)
+      RC(2,0) RC(2,1) RC(2,2) RC(2,3)
+      RC(3,0) RC(3,1) RC(3,2) RC(3,3)
+      RC(4,0) RC(4,1) RC(4,2) RC(4,3)
+    >;
+  };
+
+  /* --- REQUIRED for ZMK Studio: physical layout (20 keys = 5x4) --- */
+  fusion_16_layout: fusion_16_layout {
+    compatible = "zmk,physical-layout";
+    display-name = "Fusion 16";
+    transform = <&default_transform>;
+
+    /* 20 keys, order must match your keymap bindings order */
+    keys = <
+      &key_physical_attrs 100 100 0   0   0 0 0
+      &key_physical_attrs 100 100 100 0   0 0 0
+      &key_physical_attrs 100 100 200 0   0 0 0
+      &key_physical_attrs 100 100 300 0   0 0 0
+
+      &key_physical_attrs 100 100 0   100 0 0 0
+      &key_physical_attrs 100 100 100 100 0 0 0
+      &key_physical_attrs 100 100 200 100 0 0 0
+      &key_physical_attrs 100 100 300 100 0 0 0
+
+      &key_physical_attrs 100 100 0   200 0 0 0
+      &key_physical_attrs 100 100 100 200 0 0 0
+      &key_physical_attrs 100 100 200 200 0 0 0
+      &key_physical_attrs 100 100 300 200 0 0 0
+
+      &key_physical_attrs 100 100 0   300 0 0 0
+      &key_physical_attrs 100 100 100 300 0 0 0
+      &key_physical_attrs 100 100 200 300 0 0 0
+      &key_physical_attrs 100 100 300 300 0 0 0
+
+      &key_physical_attrs 100 100 0   400 0 0 0
+      &key_physical_attrs 100 100 100 400 0 0 0
+      &key_physical_attrs 100 100 200 400 0 0 0
+      &key_physical_attrs 100 100 300 400 0 0 0
+    >;
+  };
+
+  /* --- Matrix scanner --- */
   kscan0: kscan {
     compatible = "zmk,kscan-gpio-matrix";
     diode-direction = "col2row";
 
-    /* Columns */
+    /* Columns (from your existing overlay) */
     col-gpios = <
-        &gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C0 P0.17 */
-        &gpio0 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C1 P0.20 */
-        &gpio0 22 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C2 P0.22 */
-        &gpio0 24 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C3 P0.24 */
+      &gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C0 P0.17 */
+      &gpio0 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C1 P0.20 */
+      &gpio0 22 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C2 P0.22 */
+      &gpio0 24 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* C3 P0.24 */
     >;
 
-
-    /* Rows */
     row-gpios = <
-        &gpio0 9  (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R0 P0.09 */
-        &gpio0 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R1 P0.10 */
-        &gpio1 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R2 P1.11 */
-        &gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R3 P1.13 */
-        &gpio1 4  (GPIO_ACTIVE_LOW | GPIO_PULL_UP) /* R4 P1.04 (encoder push) */
+      &gpio0 9  (GPIO_ACTIVE_LOW | GPIO_PULL_UP) 
+      &gpio0 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) 
+      &gpio0 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) 
+      &gpio0 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) 
+      &gpio0 4  (GPIO_ACTIVE_LOW | GPIO_PULL_UP) 
     >;
-
   };
 
-
+  /* --- Encoder --- */
   left_encoder: left_encoder {
     compatible = "alps,ec11";
     a-gpios = <&gpio0 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* P0.11 */
