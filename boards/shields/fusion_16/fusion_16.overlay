@@ -1,7 +1,10 @@
+#include "fusion_16-layouts.dtsi"
+
 / {
   chosen {
     zmk,kscan = &kscan0;
     zmk,sensors = &left_encoder;
+    zmk,physical-layout = &fusion_16_layout;
   };
 
   kscan0: kscan {
