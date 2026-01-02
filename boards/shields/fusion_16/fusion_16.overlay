@@ -5,7 +5,7 @@
   chosen {
     zmk,kscan = &kscan0;
     zmk,physical-layout = &fusion_16_layout;
-    zmk,sensors = &sensors;
+    zmk,sensors = &left_encoder;
   };
 
   /* --- REQUIRED for ZMK Studio: matrix transform --- */
@@ -86,11 +86,5 @@
     b-gpios = <&gpio1 0  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* P1.00 */
     steps = <4>;
     status = "okay";
-  };
-
-  sensors: sensors {
-    compatible = "zmk,keymap-sensors";
-    sensors = <&left_encoder>;
-    triggers-per-rotation = <4>;
   };
 };
