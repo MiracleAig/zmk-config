@@ -1,5 +1,4 @@
 #include <behaviors.dtsi>
-#include <behaviors/studio.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
 / {
@@ -8,7 +7,7 @@
 
     default_layer {
       bindings = <
-        &kp D &kp C &kp B &kp A
+        &studio_unlock &kp C &kp B &kp A
         &kp E &kp F &kp G &kp H
         &kp I &kp J &kp K &kp L
         &kp M &kp N &kp O &kp P
